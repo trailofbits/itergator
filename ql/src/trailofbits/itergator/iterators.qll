@@ -7,6 +7,7 @@ class Iterator extends Variable {
         // getType is inconsistent
         or this.getAnAssignedValue().(FunctionCall).getTarget().(MemberFunction).getName().regexpMatch("c?r?begin")
         or this.getAnAssignedValue().(FunctionCall).getTarget().(MemberFunction).getName().regexpMatch("c?r?end")
+        or this.getAnAssignedValue().(FunctionCall).getTarget().hasName("find")
     }
 }
 
