@@ -31,6 +31,7 @@ class PotentialInvalidationSTL extends PotentialInvalidation {
         or this.hasName("pop_back")
         or this.hasName("resize")
         or this.hasName("shrink_to_fit")
+        or this.hasName("clear")
     }
 
     predicate dequeInvalidation() {
@@ -44,6 +45,8 @@ class PotentialInvalidationSTL extends PotentialInvalidation {
         or this.hasName("emplace_front")
         or this.hasName("emplace_back")
         or this.hasName("resize")
+        or this.hasName("clear")
+        or this.hasName("shrink_to_fit")
     }
 
     predicate setInvalidation() {
