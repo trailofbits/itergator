@@ -50,5 +50,6 @@ class PotentialInvalidationSTL extends PotentialInvalidation {
         this.hasName("emplace")
         or this.hasName("emplace_hint")
         or this.hasName("insert")
+        or this.hasName("clear")
     }
 }
