@@ -46,7 +46,7 @@ class InvalidationFlow extends DataFlow::Configuration {
     }
 
     override predicate isSink(DataFlow::Node sink) {
-        exists (Invalidation i | sink.asExpr() = i.getChild(-1))
+        exists (Invalidation i | sink.asExpr() = i.getAChild())
     }
 
     override predicate isBarrier(DataFlow::Node node) {

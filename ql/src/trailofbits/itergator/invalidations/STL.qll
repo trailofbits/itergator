@@ -12,6 +12,12 @@ class PotentialInvalidationSTL extends PotentialInvalidation {
         this instanceof MemberFunction
     }
 
+    override Expr invalidatedChild(Invalidation invd) {
+        result = super.invalidatedChild(invd)
+        // swap can also invalidate the first argument
+        or this.hasName("swap") and result = invd.getArgument(0)
+    }
+
     override predicate invalidates(Iterated i) {
         i.getType().refersTo(this.getParentScope())
         and (
@@ -32,6 +38,7 @@ class PotentialInvalidationSTL extends PotentialInvalidation {
         or this.hasName("resize")
         or this.hasName("shrink_to_fit")
         or this.hasName("clear")
+        or this.hasName("swap")
     }
 
     predicate dequeInvalidation() {
@@ -47,6 +54,7 @@ class PotentialInvalidationSTL extends PotentialInvalidation {
         or this.hasName("resize")
         or this.hasName("clear")
         or this.hasName("shrink_to_fit")
+        or this.hasName("swap")
     }
 
     predicate setInvalidation() {

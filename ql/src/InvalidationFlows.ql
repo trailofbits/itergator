@@ -27,6 +27,10 @@ predicate falsePositive(Iterator it, Invalidator inv) {
     or inv = it.getAnAssignedValue()
 }
 
+predicate invalidatesChild(Invalidation invd, Expr container) {
+    invd.getTarget().(PotentialInvalidation).invalidatedChild(invd) = container
+}
+
 from IteratedFlow f1, InvalidatorFlow f2, InvalidationFlow f3, int significance,
 DataFlow::Node source, DataFlow::Node invalidationNode, DataFlow::Node iteratedNode, DataFlow::Node invalidatorNode,
 Invalidator inv, Iterated itd, Iterator it, Invalidation invd
@@ -35,7 +39,7 @@ where itd = iteratedNode.asExpr()
 and itd = inv.iterated()
 and it = itd.iterator()
 and inv = invalidatorNode.asExpr().getEnclosingElement()
-and inv.invalidation().getChild(-1) = invalidationNode.asExpr()
+and invalidatesChild(inv.invalidation(), invalidationNode.asExpr())
 and invd = invalidationNode.asExpr().getEnclosingElement()
 // make sure the actions can operate on the same values
 and (
