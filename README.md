@@ -2,6 +2,8 @@
 
 A [CodeQL](https://securitylab.github.com/tools/codeql) library for detecting and analyzing iterator invalidation in C++ codebases.
 
+NOTE: As of February 2026, the itergator CodeQL queries were moved to [trailofbits/codeql-queries](https://github.com/trailofbits/codeql-queries) repository (in [PR#38](https://github.com/trailofbits/codeql-queries/pull/38)).
+
 ## Getting started
 
 Set up CodeQL in Visual Studio Code. We recommend using the [starter workspace](https://help.semmle.com/codeql/codeql-for-vscode/procedures/setting-up.html#using-the-starter-workspace).
